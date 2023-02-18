@@ -23,7 +23,7 @@
 - イラストを描くとき
 
 ## 設計書
-- 実装機能リストのURL : 
+- 実装機能リストのURL : https://docs.google.com/spreadsheets/d/1hrnAojXChKN-qYsR9w83asFo8KryjkbPgyc4qp7aOmY/edit?usp=sharing
 
 ## 開発環境
 - OS：Linux(CentOS)
