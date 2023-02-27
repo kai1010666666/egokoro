@@ -1,2 +1,10 @@
-<h1>Admin::Accounts#show</h1>
-<p>Find me in app/views/admin/accounts/show.html.erb</p>
+<div>マイページ</div>
+<div>
+    登録情報
+    <%= link_to "編集する",edit_customer_path, class:"btn btn-success" %>
+</div>
+<table border="1" style="border-collapse: collapse">
+    <tr>
+        <th>氏名</th><td><%= @account.name %></td>
+    </tr>
+</table>
