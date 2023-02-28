@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 }
   scope module: :user do
   get '/about'=>"homes#about"
-  resources :illustrations, only: [:new, :create, :index, :show, :edit, :update]
+  resources :illustrations, only: [:new, :create, :index, :show, :edit, :update, :destroy]
   resources :accounts, only: [:show, :edit, :update]
   end
   namespace :admin do

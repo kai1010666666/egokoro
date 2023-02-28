@@ -1,4 +1,5 @@
 class Illustration < ApplicationRecord
+  belongs_to :account
     has_one_attached :image
   def get_image(width, height)
     unless image.attached?

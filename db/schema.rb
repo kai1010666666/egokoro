@@ -82,7 +82,6 @@ ActiveRecord::Schema.define(version: 2023_02_27_130014) do
 
   create_table "illustrations", force: :cascade do |t|
     t.integer "account_id", null: false
-    t.string "illustration", null: false
     t.string "title", null: false
     t.text "introduction", null: false
     t.datetime "created_at", precision: 6, null: false

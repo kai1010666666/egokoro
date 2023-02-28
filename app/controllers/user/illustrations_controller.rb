@@ -4,6 +4,7 @@ class User::IllustrationsController < ApplicationController
   end
   def create
     @illustration = Illustration.new(illustration_params)
+    @illustration.account_id = current_account.id
     @illustration.save
     redirect_to illustration_path(@illustration.id)
   end
@@ -25,9 +26,14 @@ class User::IllustrationsController < ApplicationController
     redirect_to illustrations_path(@illustration.id)
   end
   
+  def destroy
+    @illustration = Illustration.find(params[:id])
+    @illustration.destroy
+    redirect_to illustrations_path
+  end
   private
   
   def illustration_params
-    params.require(:illustration).permit(:account_id,:title,:introduction,:image)
+    params.require(:illustration).permit(:account_id, :title, :introduction, :image)
   end
 end
