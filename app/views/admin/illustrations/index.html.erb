@@ -1,2 +1,23 @@
-<h1>Admin::Illustrations#index</h1>
-<p>Find me in app/views/admin/illustrations/index.html.erb</p>
+<div class="container">
+<div class="row">
+<h4>イラスト一覧</h4>
+</div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>タイトル名</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @illustrations.each do |illustration| %>
+      <tr>
+        <td>
+          <%= link_to illustration_path(illustration.id) do %>
+            <%= illustration.title %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

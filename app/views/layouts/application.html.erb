@@ -32,6 +32,9 @@
         <%= link_to "イラスト一覧", illustrations_path, class:"btn btn-light" %>
       </li>
       <li>
+        <%= link_to "アカウント一覧", accounts_path, class:"btn btn-light" %>
+      </li>
+      <li>
         <%= link_to "ログアウト", destroy_account_session_path, class:"btn btn-light", method: :delete %>
       </li>
     <% else %>
