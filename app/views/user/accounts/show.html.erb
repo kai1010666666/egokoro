@@ -1,2 +1,33 @@
-<h1>User::Accounts#show</h1>
-<p>Find me in app/views/user/accounts/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2>illustrations</h2>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>タイトル</th>
+            <th>説明</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @illustrations.each do |illustration| %>
+            <tr>
+              <td>
+                <%= link_to illustration_path(illustration.id) do %>
+                  <%= image_tag illustration.get_image(200,200) %></td>
+                <% end %>
+              <td>
+                <%= link_to illustration_path(illustration.id) do %>
+                  <%= illustration.title %>
+                <% end %>
+              </td>
+              <td><%= illustration.introduction %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

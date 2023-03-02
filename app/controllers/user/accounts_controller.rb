@@ -4,6 +4,7 @@ class User::AccountsController < ApplicationController
   end
   def show
     @account = Account.find(params[:id])
+    @illustrations = @account.illustrations
   end
 
   def edit
