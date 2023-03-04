@@ -12,4 +12,11 @@ class Account < ApplicationRecord
     end
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
+  
+  def self.guest
+    find_or_create_by!(email: "guest@example.com") do |account|
+      account.password = SecureRandom.urlsafe_base64
+      account.name = "ゲストユーザー" # ←ユーザー名を設定している場合は追加
+    end
+  end
 end

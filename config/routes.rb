@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: "user/homes#top"
+
   devise_for :admins, controllers: {
   sessions: "admin/sessions"
 }
@@ -7,6 +8,9 @@ Rails.application.routes.draw do
   registrations: "user/registrations",
   sessions: 'user/sessions'
 }
+  devise_scope :account do
+    post "accounts/guest_sign_in", to: "user/sessions#guest_sign_in"
+  end
   scope module: :user do
   get '/about'=>"homes#about"
   resources :illustrations, only: [:new, :create, :index, :show, :edit, :update, :destroy]
