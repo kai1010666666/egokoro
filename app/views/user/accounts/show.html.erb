@@ -1,7 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h2>illustrations</h2>
+      <h2>マイページ</h2>
+          <def><%= image_tag @account.get_profile_image(100,100) %></def>
+          <def><%= @account.name %></def>
       <table>
         <thead>
           <tr>
@@ -30,4 +32,3 @@
       </table>
     </div>
   </div>
-</div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Egokoro</title>
+    <title>えごころ</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,7 +10,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
         <a class="navbar-brand p-3" href="/">
-            <span class="btn btn-light">LOGO</span>
+            <span class="btn btn-light">えごころ</span>
         </a>
     <nav  class="navbar navbar-expand-lg navbar-light">
     <ul class="navbar-nav ml-auto">
@@ -50,10 +50,21 @@
       <li>
         <%= link_to "ログイン", new_account_session_path, class:"btn btn-light" %>
       </li>
+      <li>
+        <%= link_to 'ゲストログイン（閲覧用）', accounts_guest_sign_in_path, method: :post %>
+      </li>
     <% end %>
     </ul>
     </nav>
   <body>
+    
+    <%= form_tag illustrations_path, :method => 'get' do %> <%#　illustrations_pathはモデル名で読みかえること %>
+      <p>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Search", :name => nil %>
+     </p>
+    <% end %>
+    
     <%= yield %>
   </body>
 </html>
