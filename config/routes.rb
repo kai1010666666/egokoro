@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get '/about'=>"homes#about"
   resources :illustrations, only: [:new, :create, :index, :show, :edit, :update, :destroy]
   resources :accounts, only: [:index, :show, :edit, :update]
-  resources :tag, only: [:index, :show, :destroy]
+  resources :tags, only: [:index, :show, :destroy]
   end
   namespace :admin do
     root "homes#top"
