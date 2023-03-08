@@ -16,6 +16,16 @@
             </table>
         </div>
     </div>
+    <h3>Tags --></h3>
+<ul>
+  <%# 該当のPostからアソシエーションでタグを取得 %>
+  <% @illustration.tags.each do |tag| %>
+    <%# タグを展開 %>
+    <li>
+      <%= link_to tag.name, tag_path(tag) %>
+    </li>
+  <% end %>
+</ul>
     <div class="text-center">
         <%= link_to "編集する", edit_illustration_path(@illustration),class:"btn btn-success" %>
         <%= link_to "削除する", illustration_path(@illustration), class:"btn btn-sm btn-danger" , method: :delete %>

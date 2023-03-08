@@ -18,11 +18,11 @@ class Illustration < ApplicationRecord
   end
 
   # dependent: :destroyでIllustrationが削除されると同時にIllustrationとTagの関係が削除される
-  has_many :tag_illustration, dependent: :destroy
+  has_many :tag_illustrations, dependent: :destroy
 
   # throughを利用して、tag_mapsを通してtagsとの関連付け(中間テーブル)
   #   Illustration.tagsとすれば、Illustrationに紐付けられたTagの取得が可能
-  has_many :tags, through: :tag_illustration
+  has_many :tags, through: :tag_illustrations
 
   # バリデーション
   validates :title, presence: true
@@ -63,7 +63,7 @@ class Illustration < ApplicationRecord
 
       # tag_illustrationテーブルにillustration_idとtag_idを保存
       #   配列追加のようにレコードを渡すことで新規レコード作成が可能
-      self.tags << new_post_tag
+      self.tags << new_illustration_tag
     end
 
   end

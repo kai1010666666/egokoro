@@ -2,21 +2,9 @@
   <div class="row">
     <h4>イラスト新規登録</h4>
   </div>
-    <%= form_with model: @illustration do |f| %>
-    <div class="row">
-      <h5 >イラスト画像</h5>
-      <%= f.file_field :image, accept: "image/*" %>
-    </div>
-    <div class="row">
-      <h5>タイトル名</h5>
-        <%= f.text_field :title %>
-    </div>
-    <div class="row">
-      <h5>説明</h5>
-        <%= f.text_area :introduction %>
-    </div>
-  <div class="text-center">
-      <%= f.submit '新規登録', class:"btn btn-success" %>
+  <div class="row">
+    <%= form_with model: @illustration do |illustration| %>
+      <%= render 'form', illustration: illustration %>
     <% end %>
   </div>
 </div>
