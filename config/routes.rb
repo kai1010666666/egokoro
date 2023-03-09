@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   end
   scope module: :user do
   get '/about'=>"homes#about"
-  resources :illustrations
+  resources :illustrations do
+    resources :comments
+  end
   resources :accounts, only: [:index, :show, :edit, :update]
   resources :tags, only: [:index, :show, :destroy]
   end
