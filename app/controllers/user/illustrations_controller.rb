@@ -19,6 +19,7 @@ class User::IllustrationsController < ApplicationController
   
   def show
     @illustration = Illustration.find(params[:id])
+    @comment = Comment.new
   end
 
   def edit

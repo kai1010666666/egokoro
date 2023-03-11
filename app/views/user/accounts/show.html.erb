@@ -31,4 +31,7 @@
         </tbody>
       </table>
     </div>
+    <% @illustrations.each do |illustration| %>
+    <p><%= link_to "#{illustration.comments.count} コメント", illustration_path(illustration.id) %></p>
+    <% end %>
   </div>
