@@ -1,4 +1,5 @@
 class User::CommentsController < ApplicationController
+  before_action :guest_check
   def create
     illustration = Illustration.find(params[:illustration_id])
     comment = current_account.comments.new(comment_params)
@@ -7,6 +8,10 @@ class User::CommentsController < ApplicationController
     redirect_to illustration_path(illustration)
   end
 
+  def destroy
+    Comment.find(params[:id]).destroy
+    redirect_to illustration_path(params[:illustration_id])
+  end
   private
 
   def comment_params

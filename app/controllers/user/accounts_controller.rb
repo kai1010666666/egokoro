@@ -1,4 +1,5 @@
 class User::AccountsController < ApplicationController
+  before_action :guest_check, except: [:index, :show]
   def index
     @accounts = Account.all
   end

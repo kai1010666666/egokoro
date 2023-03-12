@@ -1,7 +1,10 @@
 class User::IllustrationsController < ApplicationController
+  before_action :guest_check, except: [:index, :show]
+  
   def new
     @illustration = Illustration.new
   end
+  
   def create
     @illustration = Illustration.new(illustration_params)
     @illustration.account_id = current_account.id
@@ -41,6 +44,13 @@ class User::IllustrationsController < ApplicationController
     @illustration.destroy
     redirect_to illustrations_path
   end
+  
+  def guest_check
+    if current_account == Account.guest
+      redirect_to root_path,notice: "このページを見るには会員登録が必要です。"
+    end
+  end
+  
   private
   
   def illustration_params

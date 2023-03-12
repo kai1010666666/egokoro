@@ -37,6 +37,9 @@
     <p><%= image_tag comment.account.get_profile_image(100,100) %></p>
     <%= comment.account.name %>
     <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+    <% if comment.account == current_account %>
+      <%= link_to "削除", illustration_comment_path(comment.illustration, comment), method: :delete %>
+    <% end %>
   <% end %>
 </div>
 <div>
