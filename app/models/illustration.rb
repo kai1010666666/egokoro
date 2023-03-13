@@ -1,7 +1,8 @@
 class Illustration < ApplicationRecord
   belongs_to :account
   has_many :comments, dependent: :destroy
-    has_one_attached :image
+  has_one_attached :image
+  
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/default-image.jpg')
@@ -28,7 +29,7 @@ class Illustration < ApplicationRecord
   # バリデーション
   validates :title, presence: true
   validates :introduction, presence: true
-
+  validates :image, presence: true
   def save_tags(tags)
 
     # タグをスペース区切りで分割し配列にする

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   scope module: :user do
   get '/about'=>"homes#about"
   resources :illustrations do
+    resource :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
   end
   resources :accounts, only: [:index, :show, :edit, :update]
@@ -22,7 +23,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root "homes#top"
     resources :illustrations, only: [:index, :show, :edit, :update, :destroy]
-    resources :accounts, only: [:index, :show, :edit, :update]
+    resources :accounts, only: [:index, :show]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

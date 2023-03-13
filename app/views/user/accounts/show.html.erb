@@ -1,9 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h2>マイページ</h2>
-          <def><%= image_tag @account.get_profile_image(100,100) %></def>
-          <def><%= @account.name %></def>
+          <div><%= image_tag @account.get_profile_image(100,100) %></div>
+          <div><%= @account.name %></div>
       <table>
         <thead>
           <tr>
@@ -30,6 +29,9 @@
           <% end %>
         </tbody>
       </table>
+      
+      <%= link_to "編集する" , edit_account_path(@account.id) %>
+      
     </div>
     <% @illustrations.each do |illustration| %>
     <p><%= link_to "#{illustration.comments.count} コメント", illustration_path(illustration.id) %></p>

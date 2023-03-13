@@ -1,10 +1,36 @@
-<div>マイページ</div>
-<div>
-    登録情報
-    <%= link_to "編集する",edit_customer_path, class:"btn btn-success" %>
-</div>
-<table border="1" style="border-collapse: collapse">
-    <tr>
-        <th>氏名</th><td><%= @account.name %></td>
-    </tr>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col">
+          <div><%= image_tag @account.get_profile_image(100,100) %></div>
+          <div><%= @account.name %></div>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>タイトル</th>
+            <th>説明</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @illustrations.each do |illustration| %>
+            <tr>
+              <td>
+                <%= link_to illustration_path(illustration.id) do %>
+                  <%= image_tag illustration.get_image(200,200) %></td>
+                <% end %>
+              <td>
+                <%= link_to illustration_path(illustration.id) do %>
+                  <%= illustration.title %>
+                <% end %>
+              </td>
+              <td><%= illustration.introduction %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <% @illustrations.each do |illustration| %>
+    <p><%= link_to "#{illustration.comments.count} コメント", illustration_path(illustration.id) %></p>
+    <% end %>
+  </div>

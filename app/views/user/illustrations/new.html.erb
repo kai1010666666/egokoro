@@ -2,6 +2,14 @@
   <div class="row">
     <h4>イラスト新規登録</h4>
   </div>
+<% if @illustration.errors.any? %>
+  <%= @illustration.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @illustration.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
   <div class="row">
     <%= form_with model: @illustration do |illustration| %>
       <%= render 'form', illustration: illustration %>

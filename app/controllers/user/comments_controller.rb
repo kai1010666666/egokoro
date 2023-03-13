@@ -1,5 +1,5 @@
 class User::CommentsController < ApplicationController
-  before_action :guest_check
+
   def create
     illustration = Illustration.find(params[:illustration_id])
     comment = current_account.comments.new(comment_params)

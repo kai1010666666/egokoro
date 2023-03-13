@@ -1,7 +1,9 @@
 class Admin::AccountsController < ApplicationController
-  def show
+  def index
+    @accounts = Account.all
   end
-
-  def edit
+  def show
+    @account = Account.find(params[:id])
+    @illustrations = @account.illustrations
   end
 end

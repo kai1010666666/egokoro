@@ -1,10 +1,8 @@
 class Admin::CommentsController < ApplicationController
-  def create
-    image = Image.find(params[:image_id])
-    comment = current_user.comments.new(comment_params)
-    comment.image_id = image.id
-    comment.save
-    redirect_to image_path(image)
+
+  def destroy
+    Comment.find(params[:id]).destroy
+    redirect_to illustration_path(params[:illustration_id])
   end
 
   private
