@@ -1,6 +1,12 @@
 class Illustration < ApplicationRecord
   belongs_to :account
   has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  
+  def favorited_by?(account)
+    favorites.exists?(account_id: account.id)
+  end
+  
   has_one_attached :image
   
   def get_image(width, height)
@@ -28,7 +34,6 @@ class Illustration < ApplicationRecord
 
   # バリデーション
   validates :title, presence: true
-  validates :introduction, presence: true
   validates :image, presence: true
   def save_tags(tags)
 

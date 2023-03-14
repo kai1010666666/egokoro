@@ -5,7 +5,10 @@ class Account < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :illustrations, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   has_one_attached :profile_image
+  
+  validates :name, presence: true
   
   def get_profile_image(width, height)
     unless profile_image.attached?

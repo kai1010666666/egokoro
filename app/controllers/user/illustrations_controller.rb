@@ -1,5 +1,4 @@
 class User::IllustrationsController < ApplicationController
-  before_action :guest_check, except: [:index, :show]
   
   def new
     @illustration = Illustration.new
@@ -43,12 +42,6 @@ class User::IllustrationsController < ApplicationController
     @illustration = Illustration.find(params[:id])
     @illustration.destroy
     redirect_to illustrations_path
-  end
-  
-  def guest_check
-    if current_account == Account.guest
-      redirect_to root_path,notice: "このページを見るには会員登録が必要です。"
-    end
   end
   
   private

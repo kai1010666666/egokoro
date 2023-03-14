@@ -1,2 +1,29 @@
-<h1>User::Accounts#edit</h1>
-<p>Find me in app/views/user/accounts/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2>account info</h2>
+      <% if @account.errors.any? %>
+        <%= @account.errors.count %>errors prohibited this obj from being saved:
+        <ul>
+          <% @account.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+      <%= form_with model: @account do |f| %>
+      <div>
+        <label>Name</label>
+        <div>
+          <%= f.text_field :name %>
+        </div>
+      </div>
+      <div>
+        <label>Image</label>
+        <div>
+          <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
+        </div>
+      </div>
+      <div>
+          <%= f.submit '更新する' %>
+      </div>
+      <% end %>

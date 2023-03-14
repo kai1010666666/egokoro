@@ -1,4 +1,6 @@
-class account::FavoritesController < ApplicationController
+class User::FavoritesController < ApplicationController
+  before_action :authenticate_account!
+  
   def create
     illustration = Illustration.find(params[:illustration_id])
     favorite = current_account.favorites.new(illustration_id: illustration.id)
