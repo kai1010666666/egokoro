@@ -35,6 +35,8 @@ class Illustration < ApplicationRecord
   # バリデーション
   validates :title, presence: true
   validates :image, presence: true
+  validates 
+
   def save_tags(tags)
 
     # タグをスペース区切りで分割し配列にする
