@@ -1,5 +1,4 @@
 class User::IllustrationsController < ApplicationController
-  
   def new
     @illustration = Illustration.new
   end
@@ -7,20 +6,19 @@ class User::IllustrationsController < ApplicationController
   def create
     @illustration = Illustration.new(illustration_params)
     @illustration.account_id = current_account.id
-    # 投稿ボタンを押下した場合
     if params[:post]
-      if @illustration.save(context: :publicize)
+      if @illustration.save
         @illustration.save_tags(params[:illustration][:tag])
         redirect_to illustration_path(@illustration.id)
       else
-        render :new, alert: "登録できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
+        render :new, alert: "投稿できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
       end
-    # 下書きボタンを押下した場合
+      # 下書きボタンを押下した場合
     else
       if @illustration.update(is_draft: true)
-        redirect_to account_path(current_account), notice: "下書き保存しました！"
+        redirect_to account_path(current_account), notice: "レシピを下書き保存しました"
       else
-        render :new, alert:"登録できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
+        render :new, alert: "投稿できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
       end
     end
   end
@@ -39,12 +37,14 @@ class User::IllustrationsController < ApplicationController
   end
   
   def update
-    @illustration = Illustration.find(params[:id])
-    if @illustration.update(illustration_params)
-      @illustration.save_tags(params[:illustration][:tag])
-      redirect_to illustrations_path(@illustration.id)
+    @illustration = current_account.illustrations.find(params[:id])
+   
+    @illustration.assign_attributes(illustration_params)
+    # ①下書きレシピの更新（公開）の場合
+    if @illustration.save
+       redirect_to illustration_path(@illustration.id), notice: @illustration.is_draft? ? "下書きを投稿しました" : "投稿を編集しました"
     else
-      render :edit
+       render :edit, alert:"下書きを投稿できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
     end
   end
   
@@ -57,6 +57,6 @@ class User::IllustrationsController < ApplicationController
   private
   
   def illustration_params
-    params.require(:illustration).permit(:account_id, :title, :introduction, :image)
+    params.require(:illustration).permit(:account_id, :title, :introduction, :image, :is_draft)
   end
 end

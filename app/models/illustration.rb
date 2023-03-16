@@ -1,4 +1,5 @@
 class Illustration < ApplicationRecord
+  
   belongs_to :account
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -33,10 +34,9 @@ class Illustration < ApplicationRecord
   has_many :tags, through: :tag_illustrations
 
   # バリデーション
-  validates :title, presence: true
+  validates :title, presence: true, length: { maximum: 14 }
   validates :image, presence: true
-  validates 
-
+  
   def save_tags(tags)
 
     # タグをスペース区切りで分割し配列にする
