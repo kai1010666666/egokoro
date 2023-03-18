@@ -3,10 +3,6 @@
     <div class="row">
         <%= form_with model: @illustration, url: illustration_path(@illustration.id), method: :patch do |f| %>
         
-        <div class="row">
-          <h5>is_draft</h5>
-          <%= f.check_box :is_draft, {}, checked_value='下書き', unchecked_value='公開' %>
-        </div>
         
         <div class="row">
           <h5>イラスト</h5>
@@ -21,6 +17,10 @@
           <%= f.text_area :introduction %>
         </div>
         
+        <div class="row">
+          <h5>非公開</h5>
+          <%= f.check_box :is_draft, {}, checked_value='true', unchecked_value='false' %>
+        </div>
         
         <div class="text-center">
           <%= f.submit '変更を保存',class:"btn btn-success" %>

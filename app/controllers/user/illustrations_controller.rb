@@ -24,7 +24,7 @@ class User::IllustrationsController < ApplicationController
   end
   
   def index
-    @illustrations = Illustration.search(params[:search])
+    @illustrations = Illustration.where(is_draft: false).search(params[:search])
   end
   
   def show
