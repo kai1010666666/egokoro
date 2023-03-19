@@ -1,11 +1,19 @@
-<%= illustration.file_field :image, accept: "image/*" %><br>
-<%= illustration.label :title, 'タイトル' %><br>
-<%= illustration.text_field :title %><br>
-<%= illustration.label :introduction, '説明' %><br>
-<%= illustration.text_area :introduction %><br>
-<%= illustration.label :tag, 'タグ' %><br>
-<%# Edit用に@illustration.tags.pluck(:name)でタグの配列を取得 %>
-<%= illustration.text_field :tag, value: @illustration.tags.pluck(:name) %><br>
-<small>スペースで区切ることで複数指定できます。</small><br>
-<%= illustration.submit 'レシピを公開', :name => 'post', class: 'mr-5 btn btn-sm btn-warning text-white' %>
-<%= illustration.submit '下書きに保存', :name => 'draft', class: 'mr-5 btn btn-sm btn-outline-secondary' %>
+<div class="row">
+    <h5>イラスト</h5>
+    <%= illustration.file_field :image, accept: "image/*" %>
+</div>
+<div class="row">
+    <h5>タイトル名</h5>
+    <%= illustration.text_field :title %>
+</div>
+<div class="row">
+    <h5>説明</h5>
+    <%= illustration.text_area :introduction %>
+</div>
+<div class="row">
+    <h5>タグ</h5>
+    <%= illustration.label :tag, 'タグ' %><br>
+    <%# Edit用に@illustration.tags.pluck(:name)でタグの配列を取得 %>
+    <%= illustration.text_field :tag, value: @illustration.tags.pluck(:name) %><br>
+    <small>スペースで区切ることで複数指定できます。</small><br>
+</div>
