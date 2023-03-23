@@ -13,7 +13,7 @@
   <div class="row">
     <%= form_with model: @illustration do |illustration| %>
       <%= render 'form', illustration: illustration %>
-<%= illustration.submit 'レシピを公開', :name => 'post', class: 'mr-5 btn btn-sm btn-warning text-white' %>
+<%= illustration.submit 'イラストを公開', :name => 'post', class: 'mr-5 btn btn-sm btn-warning text-white' %>
 <%= illustration.submit '下書きに保存', :name => 'draft', class: 'mr-5 btn btn-sm btn-outline-secondary' %>
     <% end %>
   </div>

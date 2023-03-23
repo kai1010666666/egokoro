@@ -30,34 +30,30 @@
           <% end %>
         </tbody>
       </table>
-      
-<table>
-  <caption>ブックマーク一覧</caption>
-  <thead>
-    <tr>
-      <th>投稿者名</th>
-      <th>タイトル</th>
-      <th>本文</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @favorites.each do |favorite| %>
-      <tr>
-        <td><%= favorite.illustration.account.name %></td>
-        <td>
-          <%= link_to illustration_path(favorite.illustration) do %>
-            <%= favorite.illustration.title %>
+      <table>
+        <caption>ブックマーク一覧</caption>
+        <thead>
+          <tr>
+            <th>投稿者名</th>
+            <th>タイトル</th>
+            <th>本文</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @favorites.each do |favorite| %>
+          <tr>
+            <td><%= favorite.illustration.account.name %></td>
+            <td>
+              <%= link_to illustration_path(favorite.illustration) do %>
+                <%= favorite.illustration.title %>
+              <% end %>
+            </td>
+            <td><%= favorite.illustration.introduction %></td>
+          </tr>
           <% end %>
-        </td>
-        <td><%= favorite.illustration.introduction %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-      
+        </tbody>
+      </table>
       <%= link_to "編集する" , edit_account_path(@account.id) %>
-      
     </div>
-    <% @illustrations.each do |illustration| %>
-    <% end %>
   </div>
+</div>
