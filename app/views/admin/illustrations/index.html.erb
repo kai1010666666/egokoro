@@ -12,7 +12,7 @@
     <% @illustrations.each do |illustration| %>
       <tr>
         <td>
-          <%= link_to illustration_path(illustration.id) do %>
+          <%= link_to admin_illustration_path(illustration.id) do %>
             <%= illustration.title %>
           <% end %>
         </td>

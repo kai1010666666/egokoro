@@ -3,7 +3,7 @@ class TagIllustration < ApplicationRecord
   belongs_to :illustration
   belongs_to :tag
 
-  # 念のためのバリデーション
+  # バリデーション
   validates :illustration_id, presence: true
   validates :tag_id, presence: true
 end

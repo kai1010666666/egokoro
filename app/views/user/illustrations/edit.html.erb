@@ -1,18 +1,17 @@
 <div class="container">
-    <h4>イラスト編集</h4>
-    <div class="row">
-        <%= form_with model: @illustration, url: illustration_path(@illustration.id), method: :patch do |illustration| %>
-        
+  <div class="row">
+    <div class="col">
+      <h4>イラスト編集</h4>
+      <%= form_with model: @illustration, url: illustration_path(@illustration.id), method: :patch do |illustration| %>
         <%= render 'form', illustration: illustration %>
-        
         <div class="row">
           <h5>非公開</h5>
           <%= illustration.check_box :is_draft, {}, checked_value='true', unchecked_value='false' %>
         </div>
-        
         <div class="text-center">
           <%= illustration.submit '変更を保存',class:"btn btn-success" %>
         </div>
       <% end %>
     </div>
+  </div>
 </div>

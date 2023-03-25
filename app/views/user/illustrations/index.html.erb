@@ -1,12 +1,12 @@
 <div class="container">
-<div class="row">
-<h4>イラスト一覧</h4>
-  <h1>
+  <div class="row">
+    <h4>イラスト一覧</h4>
+    <h1>
       <%= link_to "+", new_illustration_path %>
-  </h1>
-</div>
-<h2>Tag Actions --></h2>
-<%= link_to 'Tags List', tags_path %>
+    </h1>
+  </div>
+  <h2>Tag Actions --></h2>
+  <%= link_to 'Tags List', tags_path %>
   <table class="table">
     <thead>
       <tr>
@@ -14,15 +14,15 @@
       </tr>
     </thead>
     <tbody>
-    <% @illustrations.each do |illustration| %>
-      <tr>
-        <td>
-          <%= link_to illustration_path(illustration.id) do %>
-            <%= illustration.title %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
+      <% @illustrations.each do |illustration| %>
+        <tr>
+          <td>
+            <%= link_to illustration_path(illustration.id) do %>
+              <%= illustration.title %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
     </tbody>
   </table>
 </div>

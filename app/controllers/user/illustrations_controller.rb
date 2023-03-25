@@ -9,14 +9,14 @@ class User::IllustrationsController < ApplicationController
     if params[:post]
       if @illustration.save
         @illustration.save_tags(params[:illustration][:tag])
-        redirect_to illustration_path(@illustration.id)
+        redirect_to illustration_path(@illustration.id), notice: "投稿を公開しました"
       else
         render :new, alert: "投稿できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
       end
       # 下書きボタンを押下した場合
     else
       if @illustration.update(is_draft: true)
-        redirect_to account_path(current_account), notice: "レシピを下書き保存しました"
+        redirect_to account_path(current_account), notice: "投稿を下書き保存しました"
       else
         render :new, alert: "投稿できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
       end
@@ -38,11 +38,10 @@ class User::IllustrationsController < ApplicationController
   
   def update
     @illustration = current_account.illustrations.find(params[:id])
-   
     @illustration.assign_attributes(illustration_params)
-    # ①下書きレシピの更新（公開）の場合
     if @illustration.save
-       redirect_to illustration_path(@illustration.id), notice: @illustration.is_draft? ? "下書きを投稿しました" : "投稿を編集しました"
+        @illustration.save_tags(params[:illustration][:tag])
+       redirect_to illustration_path(@illustration.id), notice: @illustration.is_draft? ? "下書きを編集しました" : "投稿を編集しました"
     else
        render :edit, alert:"下書きを投稿できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
     end

@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   end
   namespace :admin do
     root "homes#top"
-    resources :illustrations, only: [:index, :show, :edit, :update, :destroy]
+    resources :illustrations, only: [:index, :show, :destroy]
     resources :accounts, only: [:index, :show]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

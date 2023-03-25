@@ -12,7 +12,6 @@
 </div>
 <div class="row">
     <h5>タグ</h5>
-    <%= illustration.label :tag, 'タグ' %><br>
     <%# Edit用に@illustration.tags.pluck(:name)でタグの配列を取得 %>
     <%= illustration.text_field :tag, value: @illustration.tags.pluck(:name) %><br>
     <small>スペースで区切ることで複数指定できます。</small><br>
