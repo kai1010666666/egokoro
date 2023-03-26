@@ -3,33 +3,30 @@
     <div class="col">
       <div><%= image_tag @account.get_profile_image(100,100) %></div>
       <div><%= @account.name %></div>
-      <table>
-        <thead>
-          <tr>
-            <th></th>
-            <th>タイトル</th>
-            <th>説明</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @illustrations.each do |illustration| %>
-            <tr>
-              <td>
-                <%= link_to illustration_path(illustration.id) do %>
-                  <%= image_tag illustration.get_image(200,200) %></td>
-                <% end %>
-              <td>
-                <%= link_to illustration_path(illustration.id) do %>
-                  <%= illustration.title %>
-                <% end %>
+      <div>
+        <% @illustrations.each do |illustration| %>
+          <%= link_to illustration_path(illustration.id) do %>
+            <%= image_tag illustration.get_image(200,200) %></td>
+          <% end %>
+          <table>
+            <tbody>
+              <tr>
+                <th>タイトル</th>
+                <th>説明</th>
+                <th>コメント</th>
+              </tr>
+              <tr>
+                <td>
+                  <%= link_to illustration_path(illustration.id) do %>
+                    <%= illustration.title %>
+                  <% end %>
               </td>
               <td><%= illustration.introduction %></td>
               <td><%= link_to "#{illustration.comments.count} コメント", illustration_path(illustration.id) %></td>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      <% end %>
       <table>
         <caption>ブックマーク一覧</caption>
         <thead>
@@ -53,7 +50,7 @@
           <% end %>
         </tbody>
       </table>
-      <%= link_to "編集する" , edit_account_path(@account.id) %>
+      <%= link_to "編集する" , edit_account_path(@account.id),class:"btn btn-success" %>
     </div>
   </div>
 </div>

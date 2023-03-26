@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    attributes:
+      illustration:
+        title: タイトル
+        image: イラスト
+  models:
+    illustration: イラスト

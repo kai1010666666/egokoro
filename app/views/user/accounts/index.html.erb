@@ -7,7 +7,7 @@
           <tr>
             <td><%= image_tag account.get_profile_image(100,100) %></td>
             <td><%= account.name %></td>
-            <td><%= link_to "アカウント詳細", account_path(account.id) %></td>
+            <td><%= link_to "アカウント詳細", account_path(account.id) ,class:"btn btn-primary" %></td>
           </tr>
         <% end %>
       </table>

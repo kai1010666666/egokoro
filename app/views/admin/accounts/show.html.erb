@@ -16,12 +16,12 @@
           <% @illustrations.each do |illustration| %>
             <tr>
               <td>
-                <%= link_to illustration_path(illustration.id) do %>
+                <%= link_to admin_illustration_path(illustration.id) do %>
                   <%= image_tag illustration.get_image(200,200) %>
                 <% end %>
               </td>
               <td>
-                <%= link_to illustration_path(illustration.id) do %>
+                <%= link_to admin_illustration_path(illustration.id) do %>
                   <%= illustration.title %>
                 <% end %>
               </td>
@@ -31,7 +31,7 @@
         </tbody>
       </table>
     <% @illustrations.each do |illustration| %>
-      <p><%= link_to "#{illustration.comments.count} コメント", illustration_path(illustration.id) %></p>
+      <p><%= link_to "#{illustration.comments.count} コメント", admin_illustration_path(illustration.id) %></p>
     <% end %>
     </div>
   </div>

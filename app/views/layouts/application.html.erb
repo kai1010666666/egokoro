@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script src="https://kit.fontawesome.com/*******.js" crossorigin="anonymous"></script>
     <title>えごころ</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
@@ -9,62 +10,61 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-        <a class="navbar-brand p-3" href="/">
-            <span><%= image_tag('logo.jpg') %></span>
-        </a>
-    <nav  class="navbar navbar-expand-lg navbar-light">
-      <ul class="navbar-nav ml-auto">
-        <% if admin_signed_in? %>
-          <li>
-            <%= link_to "イラスト一覧", admin_illustrations_path, class:"btn btn-light" %>
-          </li>
-          <li>
-            <%= link_to "アカウント一覧",admin_accounts_path, class:"btn btn-light" %>
-          </li>
-          <li>
-            <%= link_to "ログアウト", destroy_admin_session_path, class:"btn btn-light", method: :delete %>
-          </li>
-        <% elsif account_signed_in? %>
-          <li>
-            <%= link_to "マイページ", account_path(current_account.id), class:"btn btn-light" %>
-          </li>
-          <li>
-            <%= link_to "イラスト一覧", illustrations_path, class:"btn btn-light" %>
-          </li>
-          <li>
-            <%= link_to "アカウント一覧", accounts_path, class:"btn btn-light" %>
-          </li>
-          <li>
-            <%= link_to "ログアウト", destroy_account_session_path, class:"btn btn-light", method: :delete %>
-          </li>
-        <% else %>
-          <li>
-            <%= link_to "About", about_path, class:"btn btn-light" %>
-          </li>
-          <li>
-            <%= link_to "イラスト一覧", illustrations_path, class:"btn btn-light" %>
-          </li>
-          <li>
-            <%= link_to "新規登録", new_account_registration_path, class:"btn btn-light" %>
-          </li>
-          <li>
-            <%= link_to "ログイン", new_account_session_path, class:"btn btn-light" %>
-          </li>
-          <li>
-            <%= link_to 'ゲストログイン（閲覧用）', accounts_guest_sign_in_path, method: :post, class:"btn btn-light" %>
-          </li>
-        <% end %>
-      </ul>
-    </nav>
   <body>
-    
-    <%= form_tag illustrations_path, :method => 'get' do %> <%#　illustrations_pathはモデル名で読みかえること %>
-      <p>
-        <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag "検索", :name => nil %>
-     </p>
-    <% end %>
-    
-    <%= yield %>
+    <a class="navbar-brand p-3" href="/">
+        <span><%= image_tag('logo.jpg') %></span>
+    </a>
+    <div class="container">
+      <nav  class="navbar navbar-expand-lg navbar-light">
+        <ul class="navbar-nav ml-auto">
+          <% if admin_signed_in? %>
+            <li class="p-2">
+              <%= link_to "イラスト一覧", admin_illustrations_path, class:"btn btn-info" %>
+            </li>
+            <li class="p-2">
+              <%= link_to "アカウント一覧",admin_accounts_path, class:"btn btn-info" %>
+            </li>
+            <li class="p-2">
+              <%= link_to "ログアウト", destroy_admin_session_path, class:"btn btn-danger", method: :delete %>
+            </li>
+          <% elsif account_signed_in? %>
+            <li class="p-2">
+              <%= link_to "マイページ", account_path(current_account.id), class:"btn btn-info" %>
+            </li>
+            <li class="p-2">
+              <%= link_to "イラスト一覧", illustrations_path, class:"btn btn-info" %>
+            </li>
+            <li class="p-2">
+              <%= link_to "アカウント一覧", accounts_path, class:"btn btn-info" %>
+            </li>
+            <li class="p-2">
+              <%= link_to "ログアウト", destroy_account_session_path, class:"btn btn-danger", method: :delete %>
+            </li>
+          <% else %>
+            <li class="p-2">
+              <%= link_to "About", about_path, class:"btn btn-info" %>
+            </li>
+            <li class="p-2">
+              <%= link_to "イラスト一覧", illustrations_path, class:"btn btn-info" %>
+            </li>
+            <li class="p-2">
+              <%= link_to "新規登録", new_account_registration_path, class:"btn btn-success" %>
+            </li>
+            <li class="p-2">
+              <%= link_to "ログイン", new_account_session_path, class:"btn btn-info" %>
+            </li>
+          <% end %>
+        </ul>
+      </nav>
+      <%= form_tag illustrations_path, :method => 'get' do %> <%#　illustrations_pathはモデル名で読みかえること %>
+        <p class="text-right">
+          <%= text_field_tag :search, params[:search] %>
+          <button  type="submit">
+            <i class="fas fa-search"></i>検索
+          </button>
+        </p>
+      <% end %>
+      <%= yield %>
+    </div>
   </body>
 </html>
