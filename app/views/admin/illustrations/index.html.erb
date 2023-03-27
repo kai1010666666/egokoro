@@ -1,7 +1,8 @@
 <div class="container">
-<div class="row">
-  <h4>イラスト一覧</h4>
-</div>
+  <div class="row">
+    <h4>イラスト一覧</h4>
+  </div>
+  <%= link_to 'タグ一覧', admin_tags_path, class:"btn btn-secondary" %>
   <table class="table">
     <thead>
       <tr>
@@ -9,15 +10,15 @@
       </tr>
     </thead>
     <tbody>
-    <% @illustrations.each do |illustration| %>
-      <tr>
-        <td>
-          <%= link_to admin_illustration_path(illustration.id) do %>
-            <%= illustration.title %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
+      <% @illustrations.each do |illustration| %>
+        <tr>
+          <td>
+            <%= link_to admin_illustration_path(illustration.id) do %>
+              <%= illustration.title %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
     </tbody>
   </table>
 </div>

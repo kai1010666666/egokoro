@@ -3,36 +3,29 @@
     <div class="col">
       <div><%= image_tag @account.get_profile_image(100,100) %></div>
       <div><%= @account.name %></div>
-      <table>
-        <thead>
-          <tr>
-            <th></th>
-            <th>タイトル</th>
-            <th>説明</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @illustrations.each do |illustration| %>
+      <% @illustrations.each do |illustration| %>
+        <%= link_to admin_illustration_path(illustration.id) do %>
+          <%= image_tag illustration.get_image(200,200) %></td>
+        <% end %>
+        <table>
+          <tbody>
             <tr>
-              <td>
-                <%= link_to admin_illustration_path(illustration.id) do %>
-                  <%= image_tag illustration.get_image(200,200) %>
-                <% end %>
-              </td>
+              <th>タイトル</th>
+              <th>説明</th>
+              <th>コメント</th>
+            </tr>
+            <tr>
               <td>
                 <%= link_to admin_illustration_path(illustration.id) do %>
                   <%= illustration.title %>
                 <% end %>
               </td>
               <td><%= illustration.introduction %></td>
+              <td><%= link_to "#{illustration.comments.count} コメント", admin_illustration_path(illustration.id) %></td>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
-    <% @illustrations.each do |illustration| %>
-      <p><%= link_to "#{illustration.comments.count} コメント", admin_illustration_path(illustration.id) %></p>
-    <% end %>
+          </tbody>
+        </table>
+      <% end %>
     </div>
   </div>
 </div>

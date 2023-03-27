@@ -1,12 +1,14 @@
 <div class="container">
   <div class="row">
     <h4>イラスト一覧</h4>
-    <h1>
-      <%= link_to "+", new_illustration_path %>
-    </h1>
+    <h2>
+      <%= link_to new_illustration_path do %>
+        <i class="far fa-plus-square"></i>
+      <% end %>
+    </h2>
   </div>
   <h2>Tag Actions --></h2>
-  <%= link_to 'Tags List', tags_path %>
+  <%= link_to 'Tags List', tags_path, class:"btn btn-secondary" %>
   <table class="table">
     <thead>
       <tr>

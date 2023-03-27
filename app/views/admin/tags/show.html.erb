@@ -3,7 +3,7 @@
     <h4>タグ詳細</h4>
   </div>
   <div class="row">
-    <%= link_to 'タグ一覧', tags_path, class:"btn btn-secondary" %>
+    <%= link_to 'タグ一覧', admin_tags_path, class:"btn btn-secondary" %>
   </div>
   <div class="row">
     <h4>タグ名</h4>
@@ -12,12 +12,12 @@
     <%# タグ名 %>
     <h5><%= @tag.name %></h5>
   </div>
-  <%= link_to '削除', tag_path(@tag), method: :delete, class:"btn btn-danger", data: {confirm: '関連づいた記事のタグが空になりますがタグを削除しますか？'} %>
+  <%= link_to '削除', admin_tag_path(@tag), method: :delete, class:"btn btn-danger", data: {confirm: '関連づいた記事のタグが空になりますがタグを削除しますか？'} %>
   <div>
     <ul>
       <% @tag.illustrations.each do |illustration| %>
         <li>
-          <%= link_to illustration.title, illustration_path(illustration) %>
+          <%= link_to illustration.title, admin_illustration_path(illustration) %>
         </li>
       <% end %>
     </ul>

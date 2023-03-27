@@ -3,23 +3,22 @@
     <div class="col">
       <div><%= image_tag @account.get_profile_image(100,100) %></div>
       <div><%= @account.name %></div>
-      <div>
-        <% @illustrations.each do |illustration| %>
-          <%= link_to illustration_path(illustration.id) do %>
-            <%= image_tag illustration.get_image(200,200) %></td>
-          <% end %>
-          <table>
-            <tbody>
-              <tr>
-                <th>タイトル</th>
-                <th>説明</th>
-                <th>コメント</th>
-              </tr>
-              <tr>
-                <td>
-                  <%= link_to illustration_path(illustration.id) do %>
-                    <%= illustration.title %>
-                  <% end %>
+      <% @illustrations.each do |illustration| %>
+        <%= link_to illustration_path(illustration.id) do %>
+          <%= image_tag illustration.get_image(200,200) %></td>
+        <% end %>
+        <table>
+          <tbody>
+            <tr>
+              <th>タイトル</th>
+              <th>説明</th>
+              <th>コメント</th>
+            </tr>
+            <tr>
+              <td>
+                <%= link_to illustration_path(illustration.id) do %>
+                  <%= illustration.title %>
+                <% end %>
               </td>
               <td><%= illustration.introduction %></td>
               <td><%= link_to "#{illustration.comments.count} コメント", illustration_path(illustration.id) %></td>
@@ -27,30 +26,32 @@
           </tbody>
         </table>
       <% end %>
-      <table>
-        <caption>ブックマーク一覧</caption>
-        <thead>
-          <tr>
-            <th>投稿者名</th>
-            <th>タイトル</th>
-            <th>本文</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @favorites.each do |favorite| %>
-          <tr>
-            <td><%= favorite.illustration.account.name %></td>
-            <td>
-              <%= link_to illustration_path(favorite.illustration) do %>
-                <%= favorite.illustration.title %>
-              <% end %>
-            </td>
-            <td><%= favorite.illustration.introduction %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+    <table>
+      <caption>ブックマーク一覧</caption>
+      <thead>
+        <tr>
+          <th>投稿者名</th>
+          <th>タイトル</th>
+          <th>本文</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @favorites.each do |favorite| %>
+        <tr>
+          <td><%= favorite.illustration.account.name %></td>
+          <td>
+            <%= link_to illustration_path(favorite.illustration) do %>
+              <%= favorite.illustration.title %>
+            <% end %>
+          </td>
+          <td><%= favorite.illustration.introduction %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% if @account == current_account %>
       <%= link_to "編集する" , edit_account_path(@account.id),class:"btn btn-success" %>
+    <% end %>
     </div>
   </div>
 </div>

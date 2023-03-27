@@ -2,7 +2,7 @@ class Admin::CommentsController < ApplicationController
 
   def destroy
     Comment.find(params[:id]).destroy
-    redirect_to illustration_path(params[:illustration_id])
+    redirect_to admin_illustration_path(params[:illustration_id])
   end
 
   private

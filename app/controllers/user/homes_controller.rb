@@ -1,4 +1,5 @@
 class User::HomesController < ApplicationController
+   before_action :authenticate_account!, except: [:top, :about, :index]
     def top
     end
     def about

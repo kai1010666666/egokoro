@@ -17,8 +17,10 @@
     </div>
   </div>
   <div class="text-center">
-    <%= link_to "編集する", edit_illustration_path(@illustration),class:"btn btn-success" %>
-    <%= link_to "削除する", illustration_path(@illustration), class:"btn btn-danger" , method: :delete %>
+    <% if @illustration.account == current_account %>
+      <%= link_to "編集する", edit_illustration_path(@illustration),class:"btn btn-success" %>
+      <%= link_to "削除する", illustration_path(@illustration), class:"btn btn-danger" , method: :delete %>
+    <% end %>
   </div>
   <h4>Tags --></h4>
   <ul>
