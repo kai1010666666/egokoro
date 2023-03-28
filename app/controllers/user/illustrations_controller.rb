@@ -1,4 +1,5 @@
 class User::IllustrationsController < ApplicationController
+   before_action :authenticate_account!, except: [:index]
   def new
     @illustration = Illustration.new
   end

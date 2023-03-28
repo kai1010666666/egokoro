@@ -1,4 +1,5 @@
 class Comment < ApplicationRecord
-    belongs_to :account
-    belongs_to :illustration
+  #アソシエーション
+  belongs_to :account
+  belongs_to :illustration
 end

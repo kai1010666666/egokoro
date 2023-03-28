@@ -1,5 +1,5 @@
 class User::AccountsController < ApplicationController
-
+  before_action :authenticate_account!
   def index
     @accounts = Account.all
   end

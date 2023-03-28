@@ -1,11 +1,7 @@
 class User::HomesController < ApplicationController
-   before_action :authenticate_account!, except: [:top, :about, :index]
     def top
     end
     def about
-    end
-    def index
-        @illustrations = Illustration.all
     end
     def guest_sign_in
       user = User.find_or_create_by!(email: 'guest@example.com') do |user|
