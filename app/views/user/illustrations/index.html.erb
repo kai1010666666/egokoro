@@ -20,6 +20,7 @@
         <tr>
           <td>
             <%= link_to illustration_path(illustration.id) do %>
+              <%= image_tag illustration.get_image(1000,1000) %>
               <%= illustration.title %>
             <% end %>
           </td>

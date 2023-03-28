@@ -1,5 +1,6 @@
 class User::HomesController < ApplicationController
     def top
+    @illustrations = Illustration.all.last(4).sort.reverse
     end
     def about
     end

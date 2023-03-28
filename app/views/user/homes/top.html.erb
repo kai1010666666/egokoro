@@ -1,4 +1,27 @@
 <div class="container">
   <div><%= notice %></div>
-  TOPページ
+  <div class="row">
+    <div class="col">
+    <h5 class="text-left">ようこそ、えごころへ！</h5>
+    <div class="text-left">このサイトは、イラスト投稿サイトになります。</div>
+    <div class="text-left">会員でない方もイラスト一覧の閲覧はできますが、</div>
+    <div class="text-left">詳細閲覧するには会員登録が必要になります。</div>
+    </div>
+  </div>
+  <div class="row">
+    <div><h3>新着</h3></div>
+  </div>
+  <div class="row">
+    <% @illustrations.each do |illustration| %>
+      <div>
+        <%= link_to  illustration_path(illustration.id) do %>
+          <%= image_tag illustration.get_image(300,300) %>
+          <div><%= illustration.title %></div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="text-right">
+      <%= link_to "全てのイラストを見る", illustrations_path %>
+  </div>
 </div>
