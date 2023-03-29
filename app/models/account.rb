@@ -7,6 +7,7 @@ class Account < ApplicationRecord
   has_many :illustrations, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorited_illustrations, through: :favorites, source: :illustration
   #バリデーション
   validates :name, presence: true
   #プロフィール画像の定義

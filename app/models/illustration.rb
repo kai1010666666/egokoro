@@ -4,6 +4,7 @@ class Illustration < ApplicationRecord
   #アソシエーション(子)
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorited_accounts, through: :favorites, source: :account
   #dependent: :destroyでIllustrationが削除されると同時にIllustrationとTagの関係が削除される
   has_many :tag_illustrations, dependent: :destroy
   #throughを利用して、tag_mapsを通してtagsとの関連付け(中間テーブル)
@@ -15,12 +16,16 @@ class Illustration < ApplicationRecord
   end
   #イラストの定義
   has_one_attached :image
-  def get_image(width, height)
+  def get_image(width = nil, height = nil)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/default-image.jpg')
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', _type: 'image/jpeg')
     end
-    image.variant(resize_to_limit: [width, height]).processed
+    if width && height
+      image.variant(resize_to_limit: [width, height]).processed
+    else
+      image
+    end
   end
   #イラストタイトルの検索機能
   def self.search(search) #self.でクラスメソッドとしている

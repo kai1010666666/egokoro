@@ -2,8 +2,8 @@
   <div><%= notice %></div>
   <h4>イラスト詳細</h4>
   <div class="row">
-    <%= link_to @illustration.get_image(1000,1000), "data-lightbox": @illustration.get_image(10000,10000) do %>
-      <%= image_tag @illustration.get_image(1000,1000), class:"img"%>
+    <%= link_to @illustration.get_image, "data-lightbox": url_for(@illustration.get_image) do %>
+      <%= image_tag @illustration.get_image(500,500), class:"img" %>
     <% end %>
   </div>
   <div class="row">

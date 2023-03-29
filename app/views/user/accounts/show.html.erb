@@ -4,7 +4,7 @@
       <div><%= image_tag @account.get_profile_image(100,100) %></div>
       <div><%= @account.name %></div>
       <% @illustrations.each do |illustration| %>
-        <%= link_to illustration_path(illustration.id) do %>
+        <%= link_to illustration_path(illustration.id),data: {"turbolinks"=>false} do %>
           <%= image_tag illustration.get_image(200,200) %></td>
         <% end %>
         <table>
@@ -16,36 +16,44 @@
             </tr>
             <tr>
               <td>
-                <%= link_to illustration_path(illustration.id) do %>
+                <%= link_to illustration_path(illustration.id),data: {"turbolinks"=>false} do %>
                   <%= illustration.title %>
                 <% end %>
               </td>
               <td><%= illustration.introduction %></td>
-              <td><%= link_to "#{illustration.comments.count} コメント", illustration_path(illustration.id) %></td>
+              <td><%= link_to "#{illustration.comments.count} コメント", illustration_path(illustration.id),data: {"turbolinks"=>false} %></td>
             </tr>
           </tbody>
         </table>
       <% end %>
     <table>
-      <caption>ブックマーク一覧</caption>
+      <h4>ブックマーク一覧</h4>
       <thead>
         <tr>
           <th>投稿者名</th>
+          <th>イラスト</th>
           <th>タイトル</th>
-          <th>本文</th>
         </tr>
       </thead>
       <tbody>
         <% @favorites.each do |favorite| %>
-        <tr>
-          <td><%= favorite.illustration.account.name %></td>
-          <td>
-            <%= link_to illustration_path(favorite.illustration) do %>
-              <%= favorite.illustration.title %>
-            <% end %>
-          </td>
-          <td><%= favorite.illustration.introduction %></td>
-        </tr>
+          <tr>
+              <td>
+                <%= link_to illustration_path(favorite.illustration),data: {"turbolinks"=>false} do %>
+                  <%= favorite.illustration.account.name %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to illustration_path(favorite.illustration),data: {"turbolinks"=>false} do %>
+                  <%= image_tag favorite.illustration.get_image(100,100) %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to illustration_path(favorite.illustration),data: {"turbolinks"=>false} do %>
+                  <%= favorite.illustration.title %>
+                <% end %>
+              </td>
+          </tr>
         <% end %>
       </tbody>
     </table>

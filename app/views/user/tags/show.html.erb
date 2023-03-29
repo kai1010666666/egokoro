@@ -18,7 +18,7 @@
     <ul>
       <% @tag.illustrations.each do |illustration| %>
         <li>
-          <%= link_to illustration.title, illustration_path(illustration) %>
+          <%= link_to illustration.title, illustration_path(illustration),data: {"turbolinks"=>false} %>
         </li>
       <% end %>
     </ul>

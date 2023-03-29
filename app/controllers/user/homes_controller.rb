@@ -1,9 +1,12 @@
 class User::HomesController < ApplicationController
     def top
     @illustrations = Illustration.all.last(4).sort.reverse
+    @illustrations_favorite = Illustration.includes(:favorited_accounts).sort {|a,b| b.favorited_accounts.size <=> a.favorited_accounts.size}.first(4)
     end
+    
     def about
     end
+    
     def guest_sign_in
       user = User.find_or_create_by!(email: 'guest@example.com') do |user|
         user.password = SecureRandom.urlsafe_base64
