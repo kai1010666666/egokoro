@@ -8,26 +8,16 @@
         <% end %>
       <% end %>
     </h2>
+    <%= link_to 'タグ一覧', tags_path, class:"btn btn-secondary" %>
   </div>
-  <h2>Tag Actions --></h2>
-  <%= link_to 'Tags List', tags_path, class:"btn btn-secondary" %>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>タイトル名</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @illustrations.each do |illustration| %>
-        <tr>
-          <td>
-            <%= link_to illustration_path(illustration.id),data: {"turbolinks"=>false} do %>
-              <%= image_tag illustration.get_image(100,100) %>
-              <%= illustration.title %>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <div class="row">
+    <% @illustrations.each do |illustration| %>
+      <div class="col-3 text-center">
+        <%= link_to illustration_path(illustration.id),data: {"turbolinks"=>false} do %>
+          <%= image_tag illustration.get_image(150,150) %>
+          <div><%= illustration.title %></div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>

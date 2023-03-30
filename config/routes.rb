@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
   scope module: :user do
     get '/about'=>"homes#about"
+    get '/rank'=>"homes#rank"
     resources :illustrations do
       resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]

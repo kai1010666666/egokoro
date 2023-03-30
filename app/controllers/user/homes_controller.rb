@@ -7,7 +7,7 @@ class User::HomesController < ApplicationController
     def about
     end
     
-    def index
+    def rank
       @illustrations_favorite = Illustration.includes(:favorited_accounts).sort {|a,b| b.favorited_accounts.size <=> a.favorited_accounts.size}
     end
     

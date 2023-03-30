@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+      <h4>ランキング</h4>
+  </div>
+  <div class="row">
+      <% @illustrations_favorite.each do |illustration| %>
+        <div class="col-3 text-center">
+          <%= link_to illustration_path(illustration.id),data: {"turbolinks"=>false} do %>
+            <%= image_tag illustration.get_image(150,150) %>
+            <div><%= illustration.title %></div>
+          <% end %>
+        </div>
+      <% end %>
+  </div>
+</div>
