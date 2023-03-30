@@ -2,8 +2,10 @@
   <div class="row">
     <h4>イラスト一覧</h4>
     <h2>
-      <%= link_to new_illustration_path do %>
-        <i class="far fa-plus-square"></i>
+      <% if account_signed_in? %>
+        <%= link_to new_illustration_path do %>
+          <i class="far fa-plus-square"></i>
+        <% end %>
       <% end %>
     </h2>
   </div>

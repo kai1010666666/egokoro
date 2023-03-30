@@ -1,10 +1,14 @@
 class User::HomesController < ApplicationController
     def top
-    @illustrations = Illustration.all.last(4).sort.reverse
-    @illustrations_favorite = Illustration.includes(:favorited_accounts).sort {|a,b| b.favorited_accounts.size <=> a.favorited_accounts.size}.first(4)
+      @illustrations = Illustration.all.last(4).sort.reverse
+      @illustrations_favorite = Illustration.includes(:favorited_accounts).sort {|a,b| b.favorited_accounts.size <=> a.favorited_accounts.size}.first(4)
     end
     
     def about
+    end
+    
+    def index
+      @illustrations_favorite = Illustration.includes(:favorited_accounts).sort {|a,b| b.favorited_accounts.size <=> a.favorited_accounts.size}
     end
     
     def guest_sign_in
