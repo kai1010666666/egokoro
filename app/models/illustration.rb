@@ -38,7 +38,7 @@ class Illustration < ApplicationRecord
   # バリデーション
   validates :title, presence: true, length: { maximum: 20 }
   validates :image, presence: true
-  
+  # タグ機能
   def save_tags(tags)
     # タグをスペース区切りで分割し配列にする
     #   連続した空白も対応するので、最後の“+”がポイント
@@ -51,7 +51,6 @@ class Illustration < ApplicationRecord
     # (2) 投稿されたタグと元々自分に紐付いていたタグの差分を抽出
     #   -- 新規に追加されたタグ
     new_tags = tag_list - current_tags
-    p current_tags
     # tag_illustrationテーブルから、(1)のタグを削除
     #   tagsテーブルから該当のタグを探し出して削除する
     old_tags.each do |old|
