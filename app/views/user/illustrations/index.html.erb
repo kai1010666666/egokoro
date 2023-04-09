@@ -1,6 +1,8 @@
 <div class="container">
   <div class="row">
     <h4>イラスト一覧</h4>
+    <%= link_to 'タグ一覧', tags_path, class:"btn btn-secondary" %>
+  </div>
     <h2>
       <% if account_signed_in? %>
         <%= link_to new_illustration_path do %>
@@ -8,8 +10,6 @@
         <% end %>
       <% end %>
     </h2>
-    <%= link_to 'タグ一覧', tags_path, class:"btn btn-secondary" %>
-  </div>
   <div class="row">
     <% @illustrations.each do |illustration| %>
       <div class="col-3 text-center">
