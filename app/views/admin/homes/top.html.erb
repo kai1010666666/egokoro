@@ -1,1 +1,16 @@
-管理人トップ
+<div class="container">
+  <div class="row">
+    <h4>いいね数一覧</h4>
+  </div>
+  <div class="row">
+    <% @illustrations_favorite.each do |illustration| %>
+      <div class="col-3">
+        <%= link_to admin_illustration_path(illustration.id),data: {"turbolinks"=>false} do %>
+          <%= image_tag illustration.get_image(150,150) %>
+          <div><%= illustration.title %></div>
+        <% end %>
+        <div><%= illustration.favorites.count %>件</div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -16,7 +16,7 @@
   <div>
     <h5>関連イラスト</h5>
     <ul>
-      <% @tag.illustrations.each do |illustration| %>
+      <% @tag.illustrations.where(is_draft: false).each do |illustration| %>
         <li>
           <%= link_to illustration.title, illustration_path(illustration),data: {"turbolinks"=>false} %>
         </li>

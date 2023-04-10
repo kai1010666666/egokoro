@@ -1,6 +1,8 @@
 class User::TagsController < ApplicationController
   def index
-    @tags = Tag.all
+    @tags = Tag.select do |tag|
+      tag.illustrations.exists?(is_draft: false)
+    end
   end
 
   def show
