@@ -1,4 +1,6 @@
 class Illustration < ApplicationRecord
+  #予約投稿機能と下書き投稿機能の定義
+  scope :published, -> { where('published_at <= ? and is_draft = ?', Date.today, false ) }
   #アソシエーション(親)
   belongs_to :account
   #アソシエーション(子)

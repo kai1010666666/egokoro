@@ -1,6 +1,6 @@
 class Admin::IllustrationsController < ApplicationController
   def index
-    @illustrations = Illustration.all
+    @illustrations = Illustration.published
   end
 
   def show

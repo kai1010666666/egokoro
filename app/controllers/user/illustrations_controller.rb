@@ -17,6 +17,7 @@ class User::IllustrationsController < ApplicationController
       # 下書きボタンを押下した場合
     else
       if @illustration.update(is_draft: true)
+        @illustration.save_tags(params[:illustration][:tag])
         redirect_to account_path(current_account), notice: "投稿を下書き保存しました"
       else
         render :new, alert: "投稿できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
@@ -25,7 +26,7 @@ class User::IllustrationsController < ApplicationController
   end
   
   def index
-    @illustrations = Illustration.where(is_draft: false).search(params[:search])
+    @illustrations = Illustration.search(params[:search]).published
   end
   
   def show
@@ -57,6 +58,6 @@ class User::IllustrationsController < ApplicationController
   private
   
   def illustration_params
-    params.require(:illustration).permit(:account_id, :title, :introduction, :image, :is_draft)
+    params.require(:illustration).permit(:account_id, :title, :introduction, :image, :is_draft, :published_at)
   end
 end

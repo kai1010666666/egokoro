@@ -25,7 +25,7 @@
   <div class="text-center">
     <% if @illustration.account == current_account %>
       <%= link_to "編集する", edit_illustration_path(@illustration),class:"btn btn-success" %>
-      <%= link_to "削除する", illustration_path(@illustration), class:"btn btn-danger" , method: :delete %>
+      <%= link_to "削除する", illustration_path(@illustration), class:"btn btn-danger" , method: :delete, "data-confirm" => "本当にイラストを削除しますか？" %>
     <% end %>
   </div>
   <h4>タグ</h4>
@@ -61,7 +61,7 @@
     <%= comment.account.name %>
     <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
     <% if comment.account == current_account %>
-      <%= link_to "削除", illustration_comment_path(comment.illustration, comment), class:"btn btn-danger", method: :delete %>
+      <%= link_to "削除", illustration_comment_path(comment.illustration, comment), class:"btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %>
     <% end %>
   <% end %>
 </div>
