@@ -38,6 +38,12 @@
       </li>
     <% end %>
   </ul>
+  <% if @illustration.account == current_account %>
+    <% if @illustration.published_at >= Time.current %>
+      <h6>予約時刻</h6>
+      <%= @illustration.published_at.strftime('%Y/%m/%d %H:%M') %>
+    <% end %>
+  <% end %>
   <% if @illustration.favorited_by?(current_account) %>
     <p>
       <%= link_to illustration_favorites_path(@illustration), method: :delete do %>

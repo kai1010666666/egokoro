@@ -26,7 +26,7 @@ class User::IllustrationsController < ApplicationController
   end
   
   def index
-    @illustrations = Illustration.search(params[:search]).published
+    @illustrations = Illustration.draft_and_published.search(params[:search])
   end
   
   def show
@@ -58,6 +58,7 @@ class User::IllustrationsController < ApplicationController
   private
   
   def illustration_params
-    params.require(:illustration).permit(:account_id, :title, :introduction, :image, :is_draft, :published_at)
+    specify = params[:illustration][:published_at].blank? ? Time.current : params[:illustration][:published_at]
+    params.require(:illustration).permit(:account_id, :title, :introduction, :image, :is_draft).merge(published_at: specify)
   end
 end

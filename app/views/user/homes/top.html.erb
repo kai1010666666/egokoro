@@ -1,12 +1,14 @@
 <div class="container">
   <div><%= notice %></div>
   <div class="row">
+    <% if !account_signed_in? %>
     <div class="col">
-    <h5 class="text-left">ようこそ、えごころへ！</h5>
-    <div class="text-left">このサイトは、イラスト投稿サイトになります。</div>
-    <div class="text-left">会員でない方もイラスト一覧の閲覧はできますが、</div>
-    <div class="text-left">詳細閲覧するには会員登録が必要になります。</div>
+      <h5 class="text-left">ようこそ、えごころへ！</h5>
+      <div class="text-left">このサイトは、イラスト投稿サイトになります。</div>
+      <div class="text-left">会員でない方もイラスト一覧の閲覧はできますが、</div>
+      <div class="text-left">詳細閲覧するには会員登録が必要になります。</div>
     </div>
+    <% end %>
   </div>
   <div class="row">
     <div><h3>新着</h3></div>

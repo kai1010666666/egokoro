@@ -1,6 +1,4 @@
 class Illustration < ApplicationRecord
-  #予約投稿機能と下書き投稿機能の定義
-  scope :published, -> { where('published_at <= ? and is_draft = ?', Date.today, false ) }
   #アソシエーション(親)
   belongs_to :account
   #アソシエーション(子)
@@ -12,6 +10,16 @@ class Illustration < ApplicationRecord
   #throughを利用して、tag_mapsを通してtagsとの関連付け(中間テーブル)
   #Illustration.tagsとすれば、Illustrationに紐付けられたTagの取得が可能
   has_many :tags, through: :tag_illustrations
+  #saveをするまえにround_secメソッドを行う
+  before_save :round_sec
+  
+  #下書き機能の定義
+  scope :draft, -> { where(is_draft: false) }
+  #予約機能の定義
+  scope :published, -> { where(published_at: ..Time.current) }
+  #投稿機能の制限の定義
+  scope :draft_and_published, -> { draft.published }
+  
   #いいね機能の定義
   def favorited_by?(account)
     favorites.exists?(account_id: account.id)
@@ -69,5 +77,11 @@ class Illustration < ApplicationRecord
       #   配列追加のようにレコードを渡すことで新規レコード作成が可能
       self.tags << new_illustration_tag
     end
+  end
+  
+  private
+  #予約投稿画面の”秒”を0秒で統一する
+  def round_sec
+    self.published_at = published_at.change(sec: 0)
   end
 end
