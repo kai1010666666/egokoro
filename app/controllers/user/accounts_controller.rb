@@ -1,12 +1,12 @@
 class User::AccountsController < ApplicationController
   before_action :authenticate_account!
   def index
-    @accounts = Account.all
+    @accounts = Account.page(params[:page]).per(10)
   end
   
   def show
     @account = Account.find(params[:id])
-    @illustrations = @account.illustrations
+    @illustrations = @account.illustrations.page(params[:page]).per(6)
     @favorites = Favorite.where(account_id: current_account.id)
   end
 

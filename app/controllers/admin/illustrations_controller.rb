@@ -1,6 +1,7 @@
 class Admin::IllustrationsController < ApplicationController
   def index
-    @illustrations = Illustration.published
+    @illustrations = Illustration.draft_and_published
+    .search(params[:search]).page(params[:page]).per(8)
   end
 
   def show

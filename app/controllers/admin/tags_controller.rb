@@ -1,6 +1,8 @@
 class Admin::TagsController < ApplicationController
   def index
-    @tags = Tag.all
+    @tags = Tag.select do |tag|
+      tag.illustrations.exists?(is_draft: false).page(params[:page]).per(30)
+    end
   end
 
   def show

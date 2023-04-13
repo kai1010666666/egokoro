@@ -26,7 +26,7 @@ class User::IllustrationsController < ApplicationController
   end
   
   def index
-    @illustrations = Illustration.draft_and_published.search(params[:search])
+    @illustrations = Illustration.draft_and_published.search(params[:search]).page(params[:page]).per(8)
   end
   
   def show
