@@ -7,7 +7,7 @@ class User::AccountsController < ApplicationController
   def show
     @account = Account.find(params[:id])
     @illustrations = @account.illustrations.page(params[:page]).per(6)
-    @favorites = Favorite.where(account_id: current_account.id)
+    @favorites = Favorite.where(account_id: current_account.id).page(params[:page]).per(6)
   end
 
   def edit
