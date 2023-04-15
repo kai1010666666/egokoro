@@ -1,5 +1,4 @@
 class User::CommentsController < ApplicationController
-
   def create
     illustration = Illustration.find(params[:illustration_id])
     comment = current_account.comments.new(comment_params)

@@ -1,8 +1,9 @@
 class Admin::TagsController < ApplicationController
   def index
     @tags = Tag.select do |tag|
-      tag.illustrations.exists?(is_draft: false).page(params[:page]).per(30)
+      tag.illustrations.draft_and_published.exists?
     end
+    @tags = Kaminari.paginate_array(@tags).page(params[:page]).per(30)
   end
 
   def show
@@ -10,7 +11,7 @@ class Admin::TagsController < ApplicationController
   end
 
   def destroy
-    Tag.find(params[:id]).destroy()
+    Tag.find(params[:id]).destroy
     redirect_to admin_tags_path
   end
 end
