@@ -22,7 +22,7 @@ class Account < ApplicationRecord
   def self.guest
     find_or_create_by!(email: "guest@example.com") do |account|
       account.password = SecureRandom.urlsafe_base64
-      account.name = "ゲストアカウント" # ←アカウント名を設定している場合は追加
+      account.name = "ゲストアカウント"
     end
   end
 end

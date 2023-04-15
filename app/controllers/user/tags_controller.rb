@@ -1,5 +1,5 @@
 class User::TagsController < ApplicationController
-   before_action :authenticate_account!
+  before_action :authenticate_account!
   def index
     @tags = Tag.select do |tag|
       tag.illustrations.draft_and_published.exists?

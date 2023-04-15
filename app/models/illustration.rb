@@ -12,14 +12,12 @@ class Illustration < ApplicationRecord
   has_many :tags, through: :tag_illustrations
   #saveをするまえにround_secメソッドを行う
   before_save :round_sec
-  
   #下書き機能の定義
   scope :draft, -> { where(is_draft: false) }
   #予約機能の定義
   scope :published, -> { where(published_at: ..Time.current) }
   #投稿機能の制限の定義
   scope :draft_and_published, -> { draft.published }
-  
   #いいね機能の定義
   def favorited_by?(account)
     favorites.exists?(account_id: account.id)

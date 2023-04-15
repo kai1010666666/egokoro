@@ -1,46 +1,46 @@
 <div class="row">
-    <div class="col">
-        <h5>イラスト</h5>
-    </div>
-    <div class="col">
-        <%= illustration.file_field :image, accept: "image/*" %>
-    </div>
+  <div class="col">
+    <h5>イラスト</h5>
+  </div>
+  <div class="col">
+    <%= illustration.file_field :image, accept: "image/*" %>
+  </div>
 </div>
 <div class="row">
-    <div class="col">
-        <h5>タイトル名</h5>
-    </div>
-    <div class="col">
-        <%= illustration.text_field :title %>
-    </div>
+  <div class="col">
+    <h5>タイトル名</h5>
+  </div>
+  <div class="col">
+    <%= illustration.text_field :title %>
+  </div>
 </div>
 <div class="row">
-    <div class="col">
-        <h5>説明</h5>
-    </div>
-    <div class="col">
-        <%= illustration.text_area :introduction %>
-    </div>
+  <div class="col">
+    <h5>説明</h5>
+  </div>
+  <div class="col">
+    <%= illustration.text_area :introduction %>
+  </div>
 </div>
 <div class="row">
-    <div class="col">
-        <h5>タグ</h5>
-    </div>
-    <div class="col">
-        <%# Edit用に@illustration.tags.pluck(:name)でタグの配列を取得 %>
-        <%= illustration.text_field :tag, value: @illustration.tags.pluck(:name) %><br>
-    </div>
+  <div class="col">
+    <h5>タグ</h5>
+  </div>
+  <div class="col">
+    <%# Edit用に@illustration.tags.pluck(:name)でタグの配列を取得 %>
+    <%= illustration.text_field :tag, value: @illustration.tags.pluck(:name) %><br>
+  </div>
 </div>
 <div class="row">
-    <div class="col">
-        <small>スペースで区切ることで複数指定できます。</small><br>
-    </div>
+  <div class="col">
+    <small>スペースで区切ることで複数指定できます。</small><br>
+  </div>
 </div>
 <div class="row">
-    <div class="col">
-        <h5>予約投稿</h5>
-    </div>
-    <div class="col">
-        <%= illustration.datetime_field :published_at, class: 'form-control' %>
-    </div>
+  <div class="col">
+    <h5>予約投稿</h5>
+  </div>
+  <div class="col">
+    <%= illustration.datetime_field :published_at, class: 'form-control' %>
+  </div>
 </div>
