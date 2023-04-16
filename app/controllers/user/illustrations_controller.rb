@@ -18,7 +18,7 @@ class User::IllustrationsController < ApplicationController
     else
       if @illustration.update(is_draft: true)
         @illustration.save_tags(params[:illustration][:tag])
-        redirect_to account_path(current_account), notice: "投稿を下書き保存しました"
+        redirect_to illustration_path(@illustration.id), notice: "投稿を下書き保存しました"
       else
         render :new, alert: "投稿できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
       end
@@ -45,7 +45,7 @@ class User::IllustrationsController < ApplicationController
         @illustration.save_tags(params[:illustration][:tag])
        redirect_to illustration_path(@illustration.id), notice: @illustration.is_draft? ? "下書きを編集しました" : "投稿を編集しました"
     else
-       render :edit, alert:"下書きを投稿できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
+       render :edit
     end
   end
   

@@ -4,7 +4,7 @@
       <div><%= image_tag @account.get_profile_image(100,100) %></div>
       <div><%= @account.name %></div>
       <% @illustrations.each do |illustration| %>
-        <%= link_to illustration_path(illustration.id),data: {"turbolinks"=>false} do %>
+        <%= link_to admin_illustration_path(illustration.id),data: {"turbolinks"=>false} do %>
           <%= image_tag illustration.get_image(200,200) %></td>
         <% end %>
         <br>
@@ -15,11 +15,11 @@
           </tr>
           <tr>
             <td>
-              <%= link_to illustration_path(illustration.id),data: {"turbolinks"=>false} do %>
+              <%= link_to admin_illustration_path(illustration.id),data: {"turbolinks"=>false} do %>
                 <%= illustration.title %>
               <% end %>
             </td>
-            <td><%= link_to "#{illustration.comments.count} コメント", illustration_path(illustration.id),data: {"turbolinks"=>false} %></td>
+            <td><%= link_to "#{illustration.comments.count} コメント", admin_illustration_path(illustration.id),data: {"turbolinks"=>false} %></td>
           </tr>
         </table>
       <% end %>

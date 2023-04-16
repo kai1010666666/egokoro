@@ -18,7 +18,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
     end
     resources :accounts, only: [:index, :show, :edit, :update]
-    resources :tags, only: [:index, :show, :destroy]
+    resources :tags, only: [:index, :show]
   end
   namespace :admin do
     root "homes#top"
@@ -26,7 +26,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:destroy]
     end
     resources :accounts, only: [:index, :show]
-    resources :tags, only: [:index, :show, :destroy]
+    resources :tags, only: [:index, :show]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

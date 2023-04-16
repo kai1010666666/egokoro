@@ -16,8 +16,11 @@ class User::AccountsController < ApplicationController
 
   def update
     @account = Account.find(params[:id])
-    @account.update(account_params)
-    redirect_to account_path(current_account.id)
+    if @account.update(account_params)
+      redirect_to account_path(current_account.id)
+    else
+      render :edit
+    end
   end
   
   private

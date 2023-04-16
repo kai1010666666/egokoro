@@ -27,7 +27,7 @@
     <% end %>
   </ul>
   <div class="text-center">
-    <%= link_to "削除する", illustration_path(@illustration), class:"btn btn-sm btn-danger" , method: :delete %>
+    <%= link_to "削除する", admin_illustration_path(@illustration), class:"btn btn-sm btn-danger" , method: :delete, "data-confirm" => "本当にイラストを削除しますか？"  %>
   </div>
   <p><%= @illustration.favorites.count %> いいね</p>
   <p>コメント件数：<%= @illustration.comments.count %></p>
@@ -35,6 +35,6 @@
     <p><%= image_tag comment.account.get_profile_image(100,100) %></p>
     <%= comment.account.name %>
     <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
-    <%= link_to "削除", illustration_comment_path(comment.illustration, comment), class:"btn btn-sm btn-danger" , method: :delete %>
+    <%= link_to "削除", admin_illustration_comment_path(comment.illustration, comment), class:"btn btn-sm btn-danger" , method: :delete, "data-confirm" => "本当に削除しますか？"  %>
   <% end %>
 </div>

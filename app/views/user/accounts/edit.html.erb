@@ -3,7 +3,7 @@
     <div class="col">
       <h2>アカウント編集</h2>
       <% if @account.errors.any? %>
-        <%= @account.errors.count %>errors prohibited this obj from being saved:
+        <%= @account.errors.count %>件のエラーが発生しました
         <ul>
           <% @account.errors.full_messages.each do |message| %>
             <li><%= message %></li>

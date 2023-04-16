@@ -12,7 +12,6 @@
     <%# タグ名 %>
     <h5><%= @tag.name %></h5>
   </div>
-  <%= link_to '削除', tag_path(@tag), method: :delete, class:"btn btn-danger", data: {confirm: '関連づいた記事のタグが空になりますがタグを削除しますか？'} %>
   <div>
     <h5>関連イラスト</h5>
     <ul>
