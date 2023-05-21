@@ -1,0 +1,13 @@
+  <% if illustration.favorited_by?(current_account) %>
+    <p>
+      <%= link_to illustration_favorites_path(illustration), method: :delete, remote: true do %>
+        ♥<%= illustration.favorites.count %> いいね
+      <% end %>
+    </p>
+  <% else %>
+    <p>
+      <%= link_to illustration_favorites_path(illustration), method: :post, remote: true do %>
+        ♡<%= illustration.favorites.count %> いいね
+      <% end %>
+    </p>
+  <% end %>
