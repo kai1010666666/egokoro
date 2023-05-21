@@ -17,7 +17,11 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
     end
-    resources :accounts, only: [:index, :show, :edit, :update]
+    resources :accounts, only: [:index, :show, :edit, :update] do
+      collection do
+        get 'mypage'
+      end
+    end
     resources :tags, only: [:index, :show]
   end
   namespace :admin do

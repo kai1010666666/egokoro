@@ -1,0 +1,20 @@
+<% @illustrations.each do |illustration| %>
+  <%= link_to illustration_path(illustration.id),data: {"turbolinks"=>false} do %>
+    <%= image_tag illustration.get_image(200,200) %></td>
+  <% end %>
+  <br>
+  <table>
+    <tr>
+      <th>タイトル</th>
+      <th>コメント</th>
+    </tr>
+    <tr>
+      <td>
+        <%= link_to illustration_path(illustration.id),data: {"turbolinks"=>false} do %>
+          <%= illustration.title %>
+        <% end %>
+      </td>
+      <td><%= link_to "#{illustration.comments.count} コメント", illustration_path(illustration.id),data: {"turbolinks"=>false} %></td>
+    </tr>
+  </table>
+<% end %>

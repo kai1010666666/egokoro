@@ -12,12 +12,8 @@ class Illustration < ApplicationRecord
   has_many :tags, through: :tag_illustrations
   #saveをするまえにround_secメソッドを行う
   before_save :round_sec
-  #下書き機能の定義
-  scope :draft, -> { where(is_draft: false) }
-  #予約機能の定義
-  scope :published, -> { where(published_at: ..Time.current) }
-  #投稿機能の制限の定義
-  scope :draft_and_published, -> { draft.published }
+  #非公開機能(予約・下書き)の定義
+  scope :published, -> { where(published_at: ..Time.current).where(is_draft: false) }
   #いいね機能の定義
   def favorited_by?(account)
     favorites.exists?(account_id: account.id)
@@ -29,6 +25,7 @@ class Illustration < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/default-image.jpg')
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', _type: 'image/jpeg')
     end
+    #サイズ指定無しの場合、デフォルトの画像サイズを使用
     if width && height
       image.variant(resize_to_limit: [width, height]).processed
     else

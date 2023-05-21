@@ -4,10 +4,16 @@ class User::AccountsController < ApplicationController
     @accounts = Account.page(params[:page]).per(10)
   end
   
-  def show
-    @account = Account.find(params[:id])
+  def mypage
+    @account = current_account
     @illustrations = @account.illustrations.page(params[:page]).per(6)
     @favorites = Favorite.where(account_id: current_account.id).page(params[:page]).per(6)
+  end
+  
+  def show
+    @account = Account.find(params[:id])
+    @illustrations = @account.illustrations.published.page(params[:page]).per(6)
+    @favorites = Favorite.where(account_id: @account.id).page(params[:page]).per(6)
   end
 
   def edit

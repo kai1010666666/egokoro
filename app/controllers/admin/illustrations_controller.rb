@@ -1,7 +1,7 @@
 class Admin::IllustrationsController < ApplicationController
   before_action :authenticate_admin!
   def index
-    @illustrations = Illustration.draft_and_published
+    @illustrations = Illustration.published
   .search(params[:search]).page(params[:page]).per(8)
   end
 

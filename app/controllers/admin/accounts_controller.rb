@@ -5,6 +5,6 @@ class Admin::AccountsController < ApplicationController
   end
   def show
     @account = Account.find(params[:id])
-    @illustrations = @account.illustrations.page(params[:page]).per(6)
+    @illustrations = @account.illustrations.published.page(params[:page]).per(6)
   end
 end

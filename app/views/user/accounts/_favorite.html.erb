@@ -1,0 +1,27 @@
+<table>
+  <h4>ブックマーク一覧</h4>
+    <tr>
+      <th>投稿者名</th>
+      <th>イラスト</th>
+      <th>タイトル</th>
+    </tr>
+    <% @favorites.each do |favorite| %>
+      <tr>
+      <td>
+        <%= link_to illustration_path(favorite.illustration),data: {"turbolinks"=>false} do %>
+          <%= favorite.illustration.account.name %>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to illustration_path(favorite.illustration),data: {"turbolinks"=>false} do %>
+          <%= image_tag favorite.illustration.get_image(100,100) %>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to illustration_path(favorite.illustration),data: {"turbolinks"=>false} do %>
+          <%= favorite.illustration.title %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
