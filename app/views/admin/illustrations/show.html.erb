@@ -1,34 +1,40 @@
 <div class="container">
+  <div><%= notice %></div>
   <h4>イラスト詳細</h4>
   <div class="row">
-    <div><%= notice %></div>
-    <div class="col">
-      <%= image_tag @illustration.get_image(1000,1000) %>
-    </div>
-    <div class="col">
-      <table>
-        <tr>
-          <th>タイトル名</th><td><%= @illustration.title %></td>
-        </tr>
-        <tr>
-          <th>説明</th><td><%= @illustration.introduction %></td>
-        </tr>
-      </table>
-    </div>
+    <%= link_to @illustration.get_image, "data-lightbox": url_for(@illustration.get_image) do %>
+      <%= image_tag @illustration.get_image(500,500), class:"img" %>
+    <% end %>
   </div>
-  <h4>Tags --></h4>
+  <div class="row">
+    <table>
+      <tr>
+        <th>タイトル名</th>
+      </tr>
+      <tr>
+        <td><%= @illustration.title %></td>
+      </tr>
+      <tr>
+        <th>説明</th>
+      </tr>
+      <tr>
+        <td><%= @illustration.title %></td>
+      </tr>
+    </table>
+  </div>
+  <div class="text-center">
+      <%= link_to "削除する", admin_illustration_path(@illustration), class:"btn btn-sm btn-danger" , method: :delete, "data-confirm" => "本当にイラストを削除しますか？"  %>
+  </div>
+  <h4>タグ</h4>
   <ul>
     <%# 該当のPostからアソシエーションでタグを取得 %>
     <% @illustration.tags.each do |tag| %>
       <%# タグを展開 %>
       <li>
-        <%= link_to tag.name, admin_tag_path(tag) %>
+        <%= link_to tag.name, tag_path(tag) %>
       </li>
     <% end %>
   </ul>
-  <div class="text-center">
-    <%= link_to "削除する", admin_illustration_path(@illustration), class:"btn btn-sm btn-danger" , method: :delete, "data-confirm" => "本当にイラストを削除しますか？"  %>
-  </div>
   <p><%= @illustration.favorites.count %> いいね</p>
   <p>コメント件数：<%= @illustration.comments.count %></p>
   <% @illustration.comments.each do |comment| %>
