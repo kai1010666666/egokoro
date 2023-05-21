@@ -31,7 +31,7 @@
     <% @illustration.tags.each do |tag| %>
       <%# タグを展開 %>
       <li>
-        <%= link_to tag.name, tag_path(tag) %>
+        <%= link_to tag.name, admin_tag_path(tag) %>
       </li>
     <% end %>
   </ul>

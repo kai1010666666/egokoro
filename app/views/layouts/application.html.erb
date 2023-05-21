@@ -22,48 +22,48 @@
         <ul class="navbar-nav ml-auto">
           <% if admin_signed_in? %>
             <li class="p-2">
-              <%= link_to "イラスト一覧", admin_illustrations_path, class:"btn btn-info" %>
+              <%= link_to "イラスト一覧", admin_illustrations_path, class:"btn btn-info", data: {"turbolinks"=>false} %>
             </li>
             <li class="p-2">
-              <%= link_to "いいね一覧", admin_root_path, class:"btn btn-info" %>
+              <%= link_to "いいね一覧", admin_root_path, class:"btn btn-info", data: {"turbolinks"=>false} %>
             </li>
             <li class="p-2">
-              <%= link_to "アカウント一覧",admin_accounts_path, class:"btn btn-info" %>
+              <%= link_to "アカウント一覧",admin_accounts_path, class:"btn btn-info", data: {"turbolinks"=>false} %>
             </li>
             <li class="p-2">
-              <%= link_to "ログアウト", destroy_admin_session_path, class:"btn btn-danger", method: :delete %>
+              <%= link_to "ログアウト", destroy_admin_session_path, class:"btn btn-danger", method: :delete, data: {"turbolinks"=>false} %>
             </li>
           <% elsif account_signed_in? %>
             <li class="p-2">
-              <%= link_to "マイページ", mypage_accounts_path, class:"btn btn-info" %>
+              <%= link_to "マイページ", mypage_accounts_path, class:"btn btn-info", data: {"turbolinks"=>false} %>
             </li>
             <li class="p-2">
-              <%= link_to "イラスト一覧", illustrations_path, class:"btn btn-info" %>
+              <%= link_to "イラスト一覧", illustrations_path, class:"btn btn-info", data: {"turbolinks"=>false} %>
             </li>
             <li class="p-2">
-              <%= link_to "ランキング", rank_path, class:"btn btn-info" %>
+              <%= link_to "ランキング", rank_path, class:"btn btn-info", data: {"turbolinks"=>false} %>
             </li>
             <li class="p-2">
-              <%= link_to "アカウント一覧", accounts_path, class:"btn btn-info" %>
+              <%= link_to "アカウント一覧", accounts_path, class:"btn btn-info", data: {"turbolinks"=>false} %>
             </li>
             <li class="p-2">
-              <%= link_to "ログアウト", destroy_account_session_path, class:"btn btn-danger", method: :delete %>
+              <%= link_to "ログアウト", destroy_account_session_path, class:"btn btn-danger", method: :delete, data: {"turbolinks"=>false} %>
             </li>
           <% else %>
             <li class="p-2">
-              <%= link_to "About", about_path, class:"btn btn-info" %>
+              <%= link_to "About", about_path, class:"btn btn-info", data: {"turbolinks"=>false} %>
             </li>
             <li class="p-2">
-              <%= link_to "イラスト一覧", illustrations_path, class:"btn btn-info" %>
+              <%= link_to "イラスト一覧", illustrations_path, class:"btn btn-info", data: {"turbolinks"=>false} %>
             </li>
             <li class="p-2">
-              <%= link_to "ランキング", rank_path, class:"btn btn-info" %>
+              <%= link_to "ランキング", rank_path, class:"btn btn-info", data: {"turbolinks"=>false} %>
             </li>
             <li class="p-2">
-              <%= link_to "新規登録", new_account_registration_path, class:"btn btn-success" %>
+              <%= link_to "新規登録", new_account_registration_path, class:"btn btn-success", data: {"turbolinks"=>false} %>
             </li>
             <li class="p-2">
-              <%= link_to "ログイン", new_account_session_path, class:"btn btn-info" %>
+              <%= link_to "ログイン", new_account_session_path, class:"btn btn-info", data: {"turbolinks"=>false} %>
             </li>
           <% end %>
         </ul>
